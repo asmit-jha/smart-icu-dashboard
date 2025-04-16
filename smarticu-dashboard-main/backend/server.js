@@ -6,10 +6,14 @@ require("dotenv").config();
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+const axios = require('axios');
 require("../backend/db/db.js")
 const userRoutes = require('../backend/routes/UserRoutes.js')
 const patientRoutes = require('../backend/routes/PatientRoutes.js')
+const path = require("path");
 
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Define Schema and Models
 
 
@@ -52,7 +56,7 @@ app.use(patientRoutes)
 
 
 
-const PORT = 5000;
+const PORT = 3001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const cron = require("node-cron");
@@ -101,3 +105,39 @@ app.get("/api/vitals/average/latest", async (req, res) => {
   }
 });
 
+
+
+async function predictPatientStatus(vitals) {
+  try {
+    console.log(vitals)
+    const response = await axios.post('http://127.0.0.1:5000/predict', {
+      blood_pressure: vitals.blood_pressure,
+      oxygen_level: vitals.oxygen_level,
+      heart_rate: vitals.heart_rate
+    });
+
+    console.log(response.data)
+
+    // You get this from Flask: { prediction: 0, status: "stable" }
+    return response.data;
+
+  } catch (error) {
+    console.error('Prediction API error:', error.message);
+    throw error;
+  }
+}
+
+app.post('/api/vitals', async (req, res) => {
+  const { blood_pressure, oxygen_level, heart_rate } = req.body;
+
+  try {
+    const prediction = await predictPatientStatus({ blood_pressure, oxygen_level, heart_rate });
+
+    res.json({
+      message: 'Prediction successful',
+      prediction
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Prediction failed' });
+  }
+});

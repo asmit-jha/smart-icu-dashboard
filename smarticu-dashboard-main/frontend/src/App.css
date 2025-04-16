@@ -36,3 +36,276 @@
     transform: rotate(360deg);
   }
 }
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ffffff, #ffffff);
+  height: 200vh;
+  justify-content: center;
+  align-items: center;
+}
+.login-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/src/01 (1).jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0; /* Changed from -1 to ensure proper stacking */
+}
+
+/* Wrapper */
+.wrapper {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 420px;
+  backdrop-filter: blur(15px);
+  animation: fadeIn 0.8s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.wrapper:hover {
+  transform: scale(1.01);
+}
+
+/* Form Box */
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+  font-size: 1.8rem;
+  font-weight: 700;
+  animation: slideInDown 0.6s ease;
+}
+
+/* Input Box */
+.input-box {
+  position: relative;
+  margin-bottom: 1.5rem;
+  animation: slideInLeft 0.6s ease;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-box input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+/* Optional icon */
+.input-box .icon {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 1.2rem;
+}
+
+/* Remember and Forgot */
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #444;
+  animation: slideInRight 0.6s ease;
+}
+
+.remember-forgot a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.remember-forgot a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.8s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Login/Register Link */
+.login-register {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  animation: fadeIn 0.8s ease;
+}
+
+.login-register a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-register a:hover {
+  text-decoration: underline;
+}
+
+
+.dashboard-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: white;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.dashboard-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  gap: 2rem;
+}
+
+.patient-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  width: 90%;
+  max-width: 700px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.patient-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.patient-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.view-button {
+  background-color: #007bff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.view-button:hover {
+  background-color: #0056b3;
+}
+
+.dashboard-title {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.logo {
+  position: absolute;
+  left: 2rem;
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
