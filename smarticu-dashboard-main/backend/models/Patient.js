@@ -7,7 +7,7 @@ const PatientSchema = new mongoose.Schema({
       age: Number, // Patient age
       vitals: { // Nested object for vital signs
         heartRate: Number, // Heart rate
-        bloodPressure: String, // Blood pressure (string format like "120/80")
+        bloodPressure: Number, // Blood pressure (string format like "120/80")
         oxygenLevel: Number, // Oxygen saturation level
         //lastUpdated: Date.now // Timestamp for last update
       }

@@ -31,7 +31,7 @@ const PredictButton = ({ currentVitals, onPrediction }) => {
         }
       );
 
-      if (!response.data?.prediction) {
+      if (!response.data?.status) {
         throw new Error('Invalid prediction response');
       }
 

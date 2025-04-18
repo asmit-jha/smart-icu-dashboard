@@ -178,11 +178,16 @@ const MonitoringDashboardWithBeep = () => {
         <div style={{
           margin: "20px 0",
           padding: "15px",
-          backgroundColor: "#e8f5e9",
+          backgroundColor: prediction.status?.toLowerCase() === 'stable' ? '#e8f5e9' : '#ffebee', // green for stable, red for others
           borderRadius: "5px"
         }}>
           <h3>Prediction Results</h3>
-          <p>Status: {prediction.status}</p>
+          <p style={{
+      color: prediction.status?.toLowerCase() === 'stable' ? 'green' : 'red',
+      fontWeight: 'bold'
+    }}>
+      Status: {prediction.status}
+    </p>
         </div>
       )}
 
